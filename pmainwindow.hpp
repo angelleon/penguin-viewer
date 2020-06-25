@@ -11,16 +11,16 @@
 #include "pcentralwidget.hpp"
 
 namespace Ui {
-class PenguinViewer;
+class PMainWindow;
 }
 
-class PenguinViewer : public QMainWindow
+class PMainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit PenguinViewer(QWidget *parent = 0);
-    ~PenguinViewer();
+    explicit PMainWindow(QWidget *parent = 0);
+    ~PMainWindow();
     QAction *actionOpen();
     QAction *actionNext();
     QAction *actionPrev();
@@ -28,7 +28,7 @@ public:
     QSize renderSize();
 
 private:
-    Ui::PenguinViewer *ui;
+    Ui::PMainWindow *ui;
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

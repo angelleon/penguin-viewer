@@ -1,53 +1,54 @@
 #include "pmainwindow.hpp"
-#include "ui_penguinviewer.h"
+#include "ui_pmainwindow.h"
 
-PenguinViewer::PenguinViewer(QWidget *parent) :
+PMainWindow::PMainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::PenguinViewer)
+    ui(new Ui::PMainWindow)
 {
     ui->setupUi(this);
     PGraphicsView *gv =new PGraphicsView(this);
-    //QGraphicsView *prevGv = ui->graphicsView;
-    //ui->centralWidget->layout()->replaceWidget(ui->graphicsView, gv);
+    QGraphicsView *prevGv = ui->graphicsView;
+    ui->centralWidget->layout()->replaceWidget(ui->graphicsView, gv);
             //removeWidget(ui->graphicsView);
-    //ui->graphicsView = gv;
-    //prevGv->deleteLater();
+    ui->graphicsView = gv;
+    prevGv->deleteLater();
 
+    /*
     QWidget *prevCW = ui->centralWidget;
     ui->centralWidget = new PCentralWidget(this);
     ui->centralWidget->setLayout(new QVBoxLayout(ui->centralWidget));
     ui->centralWidget->layout()->addWidget(gv);
     prevCW->deleteLater();
-    //ui->centralWidget
-    //connect(ui->actionOpen, &QAction::triggered, )
+    */
 }
 
-PenguinViewer::~PenguinViewer()
+PMainWindow::~PMainWindow()
 {
     delete ui;
 }
 
-QAction *PenguinViewer::actionOpen() {
+QAction *PMainWindow::actionOpen() {
     return ui->actionOpen;
 }
 
-QAction *PenguinViewer::actionNext() {
+QAction *PMainWindow::actionNext() {
     return ui->actionNext;
 }
 
-QAction *PenguinViewer::actionPrev() {
+QAction *PMainWindow::actionPrev() {
     return ui->actionPrev;
 }
 
-QAction *PenguinViewer::actionQuit() {
+QAction *PMainWindow::actionQuit() {
     return ui->actionClose;
 }
 
-void PenguinViewer::sltRefreshView(QGraphicsScene *scene) {
+void PMainWindow::sltRefreshView(QGraphicsScene *scene) {
     ui->graphicsView->setScene(scene);
+    //ui->graphicsView->
 }
 
-void PenguinViewer::keyPressEvent(QKeyEvent *event) {
+void PMainWindow::keyPressEvent(QKeyEvent *event) {
     auto key = event->key();
     if (key == Qt::Key::Key_P || key == Qt::Key::Key_Left) {
         ui->actionPrev->activate(QAction::Trigger);
@@ -55,10 +56,10 @@ void PenguinViewer::keyPressEvent(QKeyEvent *event) {
     if (key == Qt::Key::Key_N || key == Qt::Key::Key_Right) {
         ui->actionNext->activate(QAction::Trigger);
     }
-    qDebug() << "Handling key event in window";
+    qDebug() << "Handling key event in window: " << event->text();
     QMainWindow::keyPressEvent(event);
 }
 
-QSize PenguinViewer::renderSize() {
+QSize PMainWindow::renderSize() {
     return ui->graphicsView->size();
 }

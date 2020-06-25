@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>PenguinViewer</class>
- <widget class="QMainWindow" name="PenguinViewer">
+ <class>PMainWindow</class>
+ <widget class="QMainWindow" name="PMainWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -18,7 +18,7 @@
     <item>
      <widget class="QGraphicsView" name="graphicsView">
       <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
         <horstretch>0</horstretch>
         <verstretch>0</verstretch>
        </sizepolicy>
@@ -110,7 +110,7 @@
     <string>Prev</string>
    </property>
    <property name="shortcut">
-    <string>Left, Up</string>
+    <string>Left</string>
    </property>
   </action>
   <action name="actionNext">
@@ -118,7 +118,7 @@
     <string>Next</string>
    </property>
    <property name="shortcut">
-    <string>Right, Down</string>
+    <string>Right</string>
    </property>
   </action>
  </widget>

@@ -9,6 +9,7 @@
 #include <QStandardPaths>
 #include <QApplication>
 #include <QGraphicsScene>
+#include <QGraphicsPixmapItem>
 
 
 #include "pmainwindow.hpp"
@@ -18,14 +19,14 @@ class Core: public QApplication
     Q_OBJECT
 
 public:
-    Core(int &argc, char *argv[], PenguinViewer *w=nullptr);
+    Core(int &argc, char *argv[], PMainWindow *w=nullptr);
     ~Core();
     int exec();
 
 private:
     int arc;
     char **arv;
-    PenguinViewer *w;
+    PMainWindow *w;
     QPixmap *pm;
     QGraphicsScene *scene;
     QDir *currDir;
